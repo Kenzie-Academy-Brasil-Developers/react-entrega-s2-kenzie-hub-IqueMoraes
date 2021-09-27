@@ -31,7 +31,7 @@ export default function Home() {
           <h3>Novo na rede?</h3>
           <GeneralButton
             insideText={"Abra sua conta"}
-            colorB={"#F5AC94"}
+            colorB={"#f5e094"}
             onClick={() => handleHistory("/signup")}
           />
         </div>
@@ -39,7 +39,7 @@ export default function Home() {
           <h3>Já possui uma conta?</h3>
           <GeneralButton
             insideText={"Entrar"}
-            colorB={"#F5AC94"}
+            colorB={"#f5e094"}
             onClick={() => handleHistory("/login")}
           />
         </div>

@@ -5,10 +5,18 @@ export default function GeneralButton({
   colorB = false,
   type = "button",
   onClick,
+  position,
+
   ...rest
 }) {
   return (
-    <Button type={type} colorB={colorB} onClick={onClick} {...rest}>
+    <Button
+      type={type}
+      colorB={colorB}
+      onClick={onClick}
+      position={position}
+      {...rest}
+    >
       <p>{insideText}</p>
     </Button>
   );

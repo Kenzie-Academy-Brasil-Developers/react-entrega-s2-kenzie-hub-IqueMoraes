@@ -1,9 +1,11 @@
 import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
-  align-items: stretch;
+  flex-direction: column;
+  /* align-items: stretch; */
+  position: relative;
   img {
     height: 120%;
     filter: opacity(80%);
@@ -18,9 +20,6 @@ export const Container = styled.div`
 export const Background = styled.div`
   @media (min-width: 1100px) {
     flex: 1;
-    /* position: relative;
-    top: 0;
-    left: 0; */
   }
 `;
 
@@ -33,10 +32,10 @@ export const DivForm = styled.div`
   max-width: 700px;
 `;
 
-const appearFromRight = keyframes`
+const appearFromUp = keyframes`
 from{
     opacity: 0;
-    transform: translatex(50px);
+    transform: translatey(-50px);
 }
 to{
     opacity: 1;
@@ -49,14 +48,20 @@ export const AnimationContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: ${appearFromRight} 1s;
+  animation: ${appearFromUp} 1s;
+  h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
   form {
     margin: 80px 0;
-    width: 340px;
+    max-height: 60vh;
+    /* width: 200px; */
     text-align: center;
-
-    h1 {
-      margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 1100px) {
+      flex-wrap: wrap;
     }
     > div {
       margin-top: 16px;
@@ -65,7 +70,7 @@ export const AnimationContainer = styled.div`
       margin-top: 8px;
       a {
         font-weight: bold;
-        color: var(--red);
+        color: var(--black);
       }
     }
   }

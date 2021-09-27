@@ -10,6 +10,8 @@ export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: ${(props) => (props.postion ? props.postion : "static")};
+
   p {
     font-family: "IBM Plex Sans", sans-serif;
     font-weight: 700;

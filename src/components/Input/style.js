@@ -18,7 +18,9 @@ export const InputContainer = styled.div`
   display: flex;
   align-items: center;
   transition: 0.4s;
-  color: var(--gray);
+  color: var(--black);
+  font-family: Yrsa, serif;
+  font-weight: 400;
 
   ${(props) =>
     props.isErrored &&
@@ -36,7 +38,7 @@ export const InputContainer = styled.div`
     border: 0;
     color: var(--black);
     &::placeholder {
-      color: var(--gray);
+      color: var(--darkGray);
     }
   }
   svg {

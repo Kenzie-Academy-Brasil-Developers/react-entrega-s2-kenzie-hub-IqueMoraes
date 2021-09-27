@@ -6,8 +6,11 @@ export default createGlobalStyle`
     --black: #232020;
     --red: #D12727;
     --green: #B3D797;
-    --pink: #F5AC94;
+    /* --pink: #F5AC94; */
+    --pink: #f5e094;
+
     --lightGray: #D6DCDA;
+    --darkGray: #555555;
     --gray: #C4C4C4;
     --yellow: #f5e094;
 }
@@ -72,5 +75,8 @@ h1{
 p{
   font-family: Yrsa, serif;
 
+}
+a{
+  text-decoration: none;
 }
 `;
