@@ -2,39 +2,20 @@ import { useHistory } from "react-router-dom";
 import GeneralButton from "../../components/Button/index";
 import { Container, DivButtons } from "./styles";
 import FundoPlaneta from "../../assets/images/FundoPlaneta.svg";
-import ScrollBox from "../../components/ScrollBox";
-import { useEffect, useState } from "react";
-import { api } from "../../services/api";
-import { toast } from "react-toastify";
 
 export default function Home() {
-  const [kenzieUsers, setKenzieUser] = useState({});
-  const [page, setPage] = useState(1);
-
   const history = useHistory();
-
-  const handlePageUp = () => (page < 27 ? setPage(page + 1) : setPage(page));
-  const handlePageDown = () => (page > 1 ? setPage(page - 1) : setPage(page));
 
   const handleHistory = (path) => {
     return history.push(path);
   };
-
-  useEffect(() => {
-    api
-      .get(`/users?perPage=15&page=${page}`)
-      .then((response) => {
-        setKenzieUser(response);
-      })
-      .catch((_) => toast.error("Tente novamente mais tarde"));
-  }, []);
 
   return (
     <Container>
       <img src={FundoPlaneta} alt="planeta em rosa ao fundo" />
       <h1>Kenzie Hub</h1>
       <div className="capa">
-        <div>
+        <div className="capaTexto">
           <p>
             Kenziehub é um hub de portfólios de programadores da Kenzie Academy!
           </p>
@@ -45,43 +26,15 @@ export default function Home() {
           </p>
         </div>
         <div>
+          <h4>
+            Veja os desenvolvedores que estão na rede e as tecnologias
+            aprendidas.
+          </h4>
           <GeneralButton
-            insideText={"<<"}
+            insideText={"Mostrar usuários"}
             colorB={"#f5e094"}
-            onClick={() => handlePageDown()}
+            onClick={() => handleHistory("/userscards")}
           />
-          <GeneralButton
-            insideText={">>"}
-            colorB={"#f5e094"}
-            onClick={() => handlePageUp()}
-          />
-
-          <ScrollBox>
-            <table>
-              {/* <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>Módulo</th>
-                  <th>Tecnologias</th>
-                </tr>
-              </thead>
-              <tbody> */}
-              {kenzieUsers.map((item) => (
-                <tr>
-                  <td>{item.name}</td>
-                  <td>{item.course_module}</td>
-                  <td>{item.course_module}</td>
-                  <td>
-                    {item.techs.map(
-                      (tec, index) =>
-                        `${index + 1}:${tec.title}-${tec.status}, `
-                    )}
-                  </td>
-                </tr>
-              ))}
-              {/* </tbody> */}
-            </table>
-          </ScrollBox>
         </div>
       </div>
       <hr />

@@ -6,6 +6,7 @@ export default function GeneralButton({
   type = "button",
   onClick,
   position,
+  disabledButton,
 
   ...rest
 }) {
@@ -15,6 +16,7 @@ export default function GeneralButton({
       colorB={colorB}
       onClick={onClick}
       position={position}
+      disabled={disabledButton}
       {...rest}
     >
       <p>{insideText}</p>
