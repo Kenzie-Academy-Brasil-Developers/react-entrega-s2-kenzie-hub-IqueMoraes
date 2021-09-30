@@ -9,21 +9,33 @@ export default function Home() {
   const handleHistory = (path) => {
     return history.push(path);
   };
+
   return (
     <Container>
-      {/* <figure> */}
       <img src={FundoPlaneta} alt="planeta em rosa ao fundo" />
-      {/* </figure> */}
       <h1>Kenzie Hub</h1>
-      <div>
-        <p>
-          Kenziehub é um hub de portfólios de programadores da Kenzie Academy!
-        </p>
-        <p>
-          Compartilhe com outros desenvolvedores as tecnologias que aprendeu e
-          as que está estudando no momento. Fortaleça as redes de conhecimento
-          de forma simples.
-        </p>
+      <div className="capa">
+        <div className="capaTexto">
+          <p>
+            Kenziehub é um hub de portfólios de programadores da Kenzie Academy!
+          </p>
+          <p>
+            Compartilhe com outros desenvolvedores as tecnologias que aprendeu e
+            as que está estudando no momento. Fortaleça as redes de conhecimento
+            de forma simples.
+          </p>
+        </div>
+        <div>
+          <h4>
+            Veja os desenvolvedores que estão na rede e as tecnologias
+            aprendidas.
+          </h4>
+          <GeneralButton
+            insideText={"Mostrar usuários"}
+            colorB={"#f5e094"}
+            onClick={() => handleHistory("/userscards")}
+          />
+        </div>
       </div>
       <hr />
       <DivButtons>

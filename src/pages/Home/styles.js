@@ -8,6 +8,15 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   align-content: space-around;
+
+  .capa {
+    display: flex;
+    flex-wrap: wrap;
+    > .capaTexto {
+      flex: 1;
+    }
+  }
+
   img {
     width: 120%;
     filter: opacity(80%);
@@ -20,6 +29,9 @@ export const Container = styled.div`
     width: 100%;
     font-size: 38px;
     text-align: center;
+  }
+  h4 {
+    width: 50%;
   }
   > div {
     width: 70%;
