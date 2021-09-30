@@ -2,6 +2,8 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   text-align: left;
+  padding: 1 rem;
+
   div {
     span {
       color: var(--red);
@@ -13,8 +15,9 @@ export const InputContainer = styled.div`
   background-color: var(--lightGray);
   border-radius: 3px;
   border: 2px solid var(--pink);
-  padding: 1rem;
-  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  /* width: 100%; */
   display: flex;
   align-items: center;
   transition: 0.4s;
@@ -33,6 +36,7 @@ export const InputContainer = styled.div`
 
   input {
     background: transparent;
+    height: 1.8rem;
     align-items: center;
     flex: 1;
     border: 0;

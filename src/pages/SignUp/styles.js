@@ -2,9 +2,11 @@ import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
   /* height: 100vh; */
+  padding: 40px;
   display: flex;
-  flex-direction: column;
-  /* align-items: stretch; */
+  justify-content: center;
+  box-sizing: border-box;
+
   position: relative;
   img {
     height: 120%;
@@ -17,19 +19,10 @@ export const Container = styled.div`
   }
 `;
 
-export const Background = styled.div`
-  @media (min-width: 1100px) {
-    flex: 1;
-  }
-`;
-
 export const DivForm = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  max-width: 700px;
 `;
 
 const appearFromUp = keyframes`
@@ -46,24 +39,23 @@ to{
 export const AnimationContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   animation: ${appearFromUp} 1s;
   h1 {
+    text-align: center;
     font-size: 30px;
     margin-bottom: 20px;
   }
   form {
-    margin: 80px 0;
-    max-height: 60vh;
-    /* width: 200px; */
+    margin-bottom: 2rem;
     text-align: center;
     display: flex;
-    flex-direction: column;
-    @media (min-width: 1100px) {
-      flex-wrap: wrap;
-    }
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
     > div {
+      padding: 1rem;
       margin-top: 16px;
     }
     p {
@@ -73,5 +65,8 @@ export const AnimationContainer = styled.div`
         color: var(--black);
       }
     }
+  }
+  >button {
+    margin-left:16px;
   }
 `;
