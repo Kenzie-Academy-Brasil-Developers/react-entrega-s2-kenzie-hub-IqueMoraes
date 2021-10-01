@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
-  /* height: 100vh; */
+  height: 100vh;
   padding: 40px;
   display: flex;
   justify-content: center;
@@ -52,7 +52,7 @@ export const AnimationContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 
     > div {
       padding: 1rem;
@@ -66,7 +66,7 @@ export const AnimationContainer = styled.div`
       }
     }
   }
-  >button {
-    margin-left:16px;
+  > button {
+    margin-left: 16px;
   }
 `;

@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 import GeneralButton from "../../components/Button/index";
-import { Container, DivButtons } from "./styles";
+import { Container, DivButtons, DivShowUsers } from "./styles";
 import FundoPlaneta from "../../assets/images/FundoPlaneta.svg";
 
 export default function Home() {
@@ -25,7 +25,7 @@ export default function Home() {
             de forma simples.
           </p>
         </div>
-        <div>
+        <DivShowUsers>
           <h4>
             Veja os desenvolvedores que estão na rede e as tecnologias
             aprendidas.
@@ -35,7 +35,7 @@ export default function Home() {
             colorB={"#f5e094"}
             onClick={() => handleHistory("/userscards")}
           />
-        </div>
+        </DivShowUsers>
       </div>
       <hr />
       <DivButtons>

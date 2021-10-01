@@ -52,3 +52,10 @@ export const DivButtons = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+
+export const DivShowUsers = styled.div ` 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    `
