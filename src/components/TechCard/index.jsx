@@ -2,10 +2,11 @@ import { BoxCard, ConfigButton } from "./style";
 import { FiTrash2, FiTool } from "react-icons/fi"
 import { useHistory } from "react-router-dom";
 
-export default function TechCard ({tech}){
+export default function TechCard ({tech, DeleteTech}){
     const {id, title, status} = tech;
     const history = useHistory()
-
+    
+   
 
     return(
         <BoxCard key={id}>
@@ -17,7 +18,7 @@ export default function TechCard ({tech}){
                     <FiTool />
 
                 </ConfigButton>
-                <ConfigButton>
+                <ConfigButton onClick={(e) => DeleteTech(id)}>
                     <FiTrash2/>
                 </ConfigButton>
             </div>

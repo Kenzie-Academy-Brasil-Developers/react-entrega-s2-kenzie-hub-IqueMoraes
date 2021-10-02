@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import Dashboard from "../pages/Dashboard";
 import Createtechs from "../pages/Createtechs";
 import EditTechCard from "../pages/EditTechCard";
+import CreateWorks from "../pages/CreateWorks";
+import EditWorkCard from "../pages/EditWorkCard";
 
 export default function Routes() {
 const [authenticated, setAuthenticated] = useState(false);
@@ -43,6 +45,13 @@ if(token){
       <Route path="/editcard/:id">
         <EditTechCard authenticated={authenticated}/>
       </Route>
+      {/* <Route path="/createworks">
+        <CreateWorks  authenticated={authenticated}/>
+        </Route>
+      <Route path="/editwork/:id">
+        <EditWorkCard authenticated={authenticated}/>
+      </Route> */}
+
     </Switch>
   );
 }

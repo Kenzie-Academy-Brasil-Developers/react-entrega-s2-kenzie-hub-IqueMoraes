@@ -28,7 +28,7 @@ export const BothCardsArea = styled.div`
 
 export const TechCardsArea = styled.div`
   box-sizing: border-box;
-  width: 50%;
+  width: 100%;
   height: 100%;
   padding: 1.2rem 0;
   margin: 2rem;
@@ -46,17 +46,17 @@ export const TechCardsArea = styled.div`
     margin-bottom: 1.2rem;
   }
 `;
-export const WorkCardsArea = styled.div`
-  box-sizing: border-box;
-  width: 50%;
-  height: 100%;
-  padding: 1.2rem 0;
-  margin: 2rem;
-  border: 2px solid var(--darkGray);
-  border-radius: 8px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: space-between;
-  overflow: auto;
-`;
+// export const WorkCardsArea = styled.div`
+//   box-sizing: border-box;
+//   width: 50%;
+//   height: 100%;
+//   padding: 1.2rem 0;
+//   margin: 2rem;
+//   border: 2px solid var(--darkGray);
+//   border-radius: 8px;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-around;
+//   align-content: space-between;
+//   overflow: auto;
+// `;
