@@ -16,9 +16,8 @@ import {
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
 
-export default function SignUp() {
+export default function SignUp({authenticated}) {
   const schema = yup.object().shape({
     name: yup.string().required("Campo obrigatório"),
     email: yup.string().email("Email inválido").required("Campo obrigatório"),
@@ -69,6 +68,10 @@ export default function SignUp() {
       })
       .catch((err) => console.log(err.message));
   };
+
+  if(authenticated){
+    return <Redirect to="/dashboard"/>
+  }
 
   return (
     <Container>

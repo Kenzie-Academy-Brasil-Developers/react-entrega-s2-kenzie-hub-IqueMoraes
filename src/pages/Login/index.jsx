@@ -7,21 +7,16 @@ import { toast } from "react-toastify";
 import { api } from "../../services/api";
 
 import {
-  FaUserAlt,
   FaEnvelope,
-  FaCertificate,
   FaLock,
-  FaLinkedin,
 } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
 
 export default function Login({ authenticated, setAuthenticated }) {
   const schema = yup.object().shape({
     email: yup.string().email("Email inválido").required("Campo obrigatório"),
-
     password: yup
       .string()
       .min(6, "mínimo de 6 dígitos")
@@ -44,14 +39,20 @@ export default function Login({ authenticated, setAuthenticated }) {
       .post("/sessions", user)
       .then((response) => {
         toast.success("Login efetuado!");
-        const { token } = response.data;
+        const { token, user } = response.data;
         localStorage.clear();
-        localStorage.setItem("@KenzieHub:token", JSON.stringify.token);
+        localStorage.setItem("@KenzieHub:token", JSON.stringify(token));
+        localStorage.setItem("@KenzieHub:user", JSON.stringify(user));
+
         setAuthenticated(true);
         return history.push("/dashboard");
       })
       .catch((_) => toast.error("Login ou senha incorreto"));
   };
+
+  if (authenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <Container>

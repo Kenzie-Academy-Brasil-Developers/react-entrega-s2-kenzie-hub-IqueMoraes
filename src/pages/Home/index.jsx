@@ -1,14 +1,18 @@
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import GeneralButton from "../../components/Button/index";
 import { Container, DivButtons, DivShowUsers } from "./styles";
 import FundoPlaneta from "../../assets/images/FundoPlaneta.svg";
 
-export default function Home() {
+export default function Home({authenticated}) {
   const history = useHistory();
 
   const handleHistory = (path) => {
     return history.push(path);
   };
+
+  if(authenticated){
+    return <Redirect to="/dashboard"/>
+  }
 
   return (
     <Container>

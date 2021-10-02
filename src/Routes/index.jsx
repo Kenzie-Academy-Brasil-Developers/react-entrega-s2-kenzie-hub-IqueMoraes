@@ -5,6 +5,8 @@ import SignUp from "../pages/SignUp";
 import Login from "../pages/Login";
 import { useEffect, useState } from "react";
 import Dashboard from "../pages/Dashboard";
+import Createtechs from "../pages/Createtechs";
+import EditTechCard from "../pages/EditTechCard";
 
 export default function Routes() {
 const [authenticated, setAuthenticated] = useState(false);
@@ -21,21 +23,26 @@ if(token){
   return (
     <Switch>
       <Route exact path="/">
-        <Home />
+        <Home authenticated={authenticated}/>
       </Route>
       <Route path="/userscards">
-        <UsersCards />
+        <UsersCards authenticated={authenticated}/>
       </Route>
       <Route path="/signup">
-        <SignUp />
+        <SignUp authenticated={authenticated}/>
       </Route>
       <Route path="/login">
         <Login authenticated={authenticated} setAuthenticated={setAuthenticated}/>
       </Route>
       <Route path="/dashboard">
-        <Dashboard />
+        <Dashboard  authenticated={authenticated}/>
         </Route>
-      <Route path="/editcard">edição de cards</Route>
+        <Route path="/createtechs">
+        <Createtechs  authenticated={authenticated}/>
+        </Route>
+      <Route path="/editcard/:id">
+        <EditTechCard authenticated={authenticated}/>
+      </Route>
     </Switch>
   );
 }
