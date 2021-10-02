@@ -1,11 +1,10 @@
 import FundoPlaneta from "../../assets/images/FundoPlaneta.svg";
-import { Container, Background, DivForm, AnimationContainer } from "./styles";
+import { Container, DivForm, AnimationContainer } from "./styles";
 import Input from "../../components/Input";
 import GeneralButton from "../../components/Button";
 import { useHistory, Link, Redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
-import Select from "react-select";
 
 import {
   FaUserAlt,
@@ -14,35 +13,23 @@ import {
   FaLock,
   FaLinkedin,
 } from "react-icons/fa";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
 
-export default function SignUp() {
-  const [module, setModule] = useState(
-    "Primeiro módulo (Introdução ao Frontend)"
-  );
-
-  const options = [
-    {
-      value: "Primeiro módulo (Introdução ao Frontend)",
-      label: "Primeiro módulo",
-    },
-    { value: "Segundo módulo (Frontend Avançado)", label: "Segundo módulo" },
-    {
-      value: "Terceiro módulo (Introdução ao Backend)",
-      label: "Terceiro módulo",
-    },
-    { value: "Quarto módulo (Backend Avançado)", label: "Quarto módulo" },
-  ];
-
+export default function SignUp({authenticated}) {
   const schema = yup.object().shape({
     name: yup.string().required("Campo obrigatório"),
     email: yup.string().email("Email inválido").required("Campo obrigatório"),
     bio: yup.string().required("Campo obrigatório"),
     contact: yup.string().required("Campo obrigatório"),
-    // course_module: yup.required("Campo obrigatório"),
+    course_module: yup
+      .string()
+      .required("Campo obrigatório")
+      .matches(
+        /(Primeiro módulo \(Introdução ao Frontend\)|Segundo módulo \(Frontend Avançado\)|Terceiro módulo \(Introdução ao Backend\)|Quarto módulo \(Backend Avançados\))/,
+        'O módulo deve corresponder ao nome completo: "Primeiro módulo (Introdução ao Frontend)", "Segundo módulo (Frontend Avançado)", "Terceiro módulo (Introdução ao Backend)", "Quarto módulo (Backend Avançado)".'
+      ),
     password: yup
       .string()
       .min(6, "mínimo de 6 dígitos")
@@ -68,24 +55,27 @@ export default function SignUp() {
     email,
     bio,
     contact,
-    module,
+    course_module,
     password,
   }) => {
-    const user = { name, email, bio, contact, module, password };
+    const user = { name, email, bio, contact, course_module, password };
     api
-      .post("/user/register", user)
+      .post("/users", user)
       .then((_) => {
         toast.success("Cadastrado com sucesso!");
 
         return history.push("/login");
       })
-      .catch((_) => toast.error("Erro ao criar a conta, tente novamente"));
+      .catch((err) => console.log(err.message));
   };
+
+  if(authenticated){
+    return <Redirect to="/dashboard"/>
+  }
 
   return (
     <Container>
       <img src={FundoPlaneta} alt="fundo planeta rosa"></img>
-      <Background></Background>
       <DivForm>
         <AnimationContainer>
           <h1>Cadastro</h1>
@@ -122,20 +112,15 @@ export default function SignUp() {
               placeholder="Seu usuário na plataforma Linkedin"
               icon={FaLinkedin}
             />
-            <Select
-              required
-              options={options}
-              value={module}
-              onChange={(e) => setModule(e.target.value)}
-            />
-            {/* <Input
+
+            <Input
               register={register}
               name="course_module"
               error={errors.course_module?.message}
               label="Módulo atual"
               placeholder="Seu módulo no curso Kenzie Academy BR"
               icon={FaCertificate}
-            /> */}
+            />
             <Input
               register={register}
               name="password"
@@ -154,19 +139,22 @@ export default function SignUp() {
               type="password"
               icon={FaLock}
             />
-
-            <GeneralButton
-              insideText={"Cadastrar"}
-              colorB={"#f5e094"}
-              type="submit"
-            ></GeneralButton>
-            <p>
-              Já possui um cadastro? <Link to="/login">Acessar conta</Link>
-            </p>
-            <p>
-              <Link to="/">Retornar</Link>
-            </p>
+            <div>
+              <GeneralButton
+                insideText={"Cadastrar"}
+                colorB={"#f5e094"}
+                type="submit"
+              ></GeneralButton>
+              <p>
+                Já possui um cadastro? <Link to="/login">Acessar conta</Link>
+              </p>
+            </div>
           </form>
+          <GeneralButton
+            insideText={"Retornar"}
+            colorB={"#f5e094"}
+            onClick={() => history.push("/")}
+          />
         </AnimationContainer>
       </DivForm>
     </Container>
